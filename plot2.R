@@ -1,0 +1,6 @@
+epdata <- tbl_df(read.csv("./data/work_ep.csv"))
+epdata$Date <- as.Date(epdata$Date, format="%d/%m/%Y")
+epdata$dateandtime <-  as.POSIXct(paste(as.Date(epdata$Date, format = "%d/%m/%Y"), epdata$Time))
+plot(epdata$dateandtime, epdata$Global_active_power, type='l', xlab="", ylab = "Global Active Power (kilowatts)")
+dev.copy(png, "plot2.png")
+dev.off()
